@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>日本免稅實付試算</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="免稅試算">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#f6f6f3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧾</text></svg>">
+<style>
+:root{--bg:#f6f6f3;--c:#fff;--t:#1c1c1a;--m:#6b6b66;--a:#c4322b;--b:#dcdcd6;--ok:#1f7a3d;--w:#b25e00;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#161615;--c:#232321;--t:#ecece8;--m:#9a9a94;--a:#ff6b62;--b:#3a3a37;--ok:#5fcf85;--w:#f0a74a}}
+:root[data-theme=dark]{--bg:#161615;--c:#232321;--t:#ecece8;--m:#9a9a94;--a:#ff6b62;--b:#3a3a37;--ok:#5fcf85;--w:#f0a74a}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--bg);color:var(--t);font:15px/1.5 -apple-system,"PingFang TC","Noto Sans TC",sans-serif;max-width:560px;margin:auto;padding:12px}
+h1{font-size:19px;margin:6px 0 10px}h2{font-size:14px;color:var(--m);margin:0 0 8px;font-weight:600}
+section,details.sec{background:var(--c);border:1px solid var(--b);border-radius:14px;padding:12px 14px;margin:10px 0}details.dt{margin:6px 0}details.dt>summary{font-weight:500;font-size:13px;color:var(--m)}summary{cursor:pointer;font-weight:600;list-style:none;display:flex;align-items:center;gap:8px}summary::-webkit-details-marker{display:none}summary::after{content:'›';color:var(--m);transform:rotate(90deg);flex:none}details[open]>summary::after{transform:rotate(-90deg)}details[open]>summary{margin-bottom:8px}.sm{font-weight:400;font-size:12px;color:var(--m);margin-left:auto;text-align:right}.grp{background:var(--bg);border:1px solid var(--b);border-left:5px solid var(--gc);border-radius:12px;padding:10px 12px;margin:12px 0}.g1{--gc:#e0584f}.g2{--gc:#3b82f6}.g3{--gc:#22a05a}.grp h2{font-size:16px;color:var(--t);font-weight:700;margin:0 0 2px}.cap{font-size:12px;color:var(--m);margin-bottom:6px}details.kb{margin:8px 0}details.kb>summary{margin:0!important}.kd{padding:6px 10px 2px}.r.dl{font-size:14px}.r.dr{font-weight:700}.r.kx{font-size:15px}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:6px 0}.row>span,label{color:var(--m);font-size:13px}
+input,select{font:inherit;font-size:16px;color:var(--t);background:var(--bg);border:1px solid var(--b);border-radius:8px;padding:8px;min-width:0}
+input{flex:1 1 110px;min-width:110px}select{flex:1}
+button{font:inherit;font-size:13px;color:var(--t);background:var(--bg);border:1px solid var(--b);border-radius:8px;padding:6px 9px;cursor:pointer}
+.seg{display:inline-flex;border:1px solid var(--b);border-radius:8px;overflow:hidden}
+.seg b{padding:9px 12px;font-weight:500;cursor:pointer;font-size:14px;white-space:nowrap}
+.seg b.on{background:var(--a);color:#fff}
+.hint{font-size:12px;color:var(--m)}.w{color:var(--w)}.ok{color:var(--ok)}
+.r{display:flex;justify-content:space-between;gap:10px;padding:3px 0;border-bottom:1px dashed var(--b)}
+.r.big{font-weight:700;font-size:17px;border:2px solid var(--a);border-radius:10px;padding:9px 11px;margin:8px 0;background:color-mix(in srgb,var(--a) 12%,var(--c))}.r span:last-child{text-align:right}
+a{color:var(--a)}.hide{display:none!important}.chips{margin:2px 0}.sub{font-size:17px;font-weight:700;margin:4px 0;color:var(--t)}.chip{display:inline-block;border:1px solid var(--b);border-radius:14px;padding:2px 9px;margin:2px 4px 2px 0;font-size:13px;cursor:pointer}
+.hd{justify-content:space-between;margin-top:0}.ttl{font-size:16px}
+.pbox{display:flex;align-items:center;gap:8px;border:1px solid var(--b);border-radius:12px;padding:6px 10px;background:var(--bg)}
+.pbox input{border:0;background:none;font-size:28px;font-weight:600;min-width:0;padding:4px}.yen{color:var(--m);font-size:20px}
+.r2{display:flex;gap:8px;align-items:center;margin:8px 0}.r2 span{color:var(--m);font-size:13px}.r2 button{flex:1;padding:10px}
+.lbl{color:var(--m);font-size:13px;margin:6px 0 4px}.seg.wide{display:flex;width:100%}.seg.wide b{flex:1;text-align:center}
+details.kb>summary>span:first-child{flex:1}details.kb>summary>span:last-child{text-align:right}
+.r2 button.on{background:var(--a);color:#fff;border-color:var(--a)}.fg{display:grid;grid-template-columns:1fr 1fr;gap:4px 10px;margin:8px 0}.fg .row{flex-wrap:nowrap;margin:0}.fg input{min-width:0;flex:1 1 48px;width:100%}.fg .row .seg{flex:none}.fg .seg b{padding:9px 7px;font-size:13px;text-align:center}#fbc .seg,#wbc .seg{display:flex;width:100%}#fbc .seg b,#wbc .seg b{flex:1}.inv{visibility:hidden}
+.r2 span{width:30px;flex:none}
+#ressec{position:sticky;bottom:0;z-index:5;margin:10px -12px 0;border-radius:16px 16px 0 0;border-bottom:0;box-shadow:0 -6px 18px rgba(0,0,0,.3);max-height:55vh;overflow:auto;padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px))}
+.rh{display:flex;align-items:center;gap:8px;margin-bottom:6px}.rh span{font-weight:700;font-size:14px}#rsm{flex:1;text-align:right;font-size:15px}#rt{flex:1}#ressec:not(.rc) #rsm{display:none}.rc #rt{display:none}.rc #out{display:none}.rc .rh{margin-bottom:0}
+.mc{border:1px solid var(--b);border-radius:12px;padding:10px 12px;margin:10px 0;background:var(--bg)}.mt{font-weight:700;margin-bottom:6px}.mrow{display:flex;gap:8px;align-items:center}.mrow .pbox{flex:1;min-width:0;padding:4px 10px}.mrow .plus{font-size:22px;font-weight:700;padding:6px 14px}.mc .seg b{padding:9px 9px}
+.mc .chip{font-size:22px;padding:2px 12px;border-radius:20px;margin:8px 6px 0 0}.stt{display:flex;align-items:baseline;gap:8px;margin-top:8px;flex-wrap:wrap}.sl{font-size:13px;color:var(--m)}.sv{font-size:26px;font-weight:700}.tot{color:var(--t);font-size:34px;font-weight:700;margin-top:6px}
+</style></head><body>
+<h1>日本免稅實付試算</h1>
+<div class="row"><div class="seg" data-p="S.mode"><b data-v="jpy">只算日幣</b><b data-v="twd">換算台幣</b></div><div class="seg" data-p="S.tx"><b data-v="ref">可退稅</b><b data-v="non">不退稅</b></div><button id="reset">重設為常用</button></div>
+
+<section><div class="row hd"><b class="ttl">商品價格</b><div class="seg" data-p="T.mx"><b data-v="0">單一稅率</b><b data-v="1">混合稅率</b></div></div>
+<div id="sgl">
+<div class="pbox"><span class="yen">¥</span><input id="price" type="number" step="any" inputmode="decimal" placeholder="輸入價格"><button data-clr>清除</button></div>
+<div class="r2"><span>稅率</span><button data-ac="0.1">加稅10%</button><button data-ac="0.08">加稅8%</button></div>
+<div id="irw"><div class="lbl">未按稅率鈕=含稅價，其稅率</div><div class="r2"><span></span><button data-ir="0.1">10%</button><button data-ir="0.08">8%</button></div></div>
+<div class="row"><span>店家折扣</span><input id="disc" type="number" step="any" inputmode="decimal" placeholder="0"><div class="seg" data-p="T.dtype"><b data-v="%">%</b><b data-v="¥">日幣</b></div></div>
+</div>
+<div id="mix" class="hide">
+<div class="mc" style="--mc:#e0584f"><div class="mt">10% 品項</div>
+<div class="mrow"><div class="pbox"><span class="yen">¥</span><input id="m10" type="number" step="any" inputmode="decimal" placeholder="價格"></div><button class="plus" data-m="10">＋</button><div class="seg" data-p="T.mt10"><b data-v="1">含稅</b><b data-v="0">未稅</b></div></div>
+<div class="chips" id="c10"></div><div class="stt" id="s10"></div></div>
+<div class="mc" style="--mc:#3b82f6"><div class="mt">8% 品項</div>
+<div class="mrow"><div class="pbox"><span class="yen">¥</span><input id="m8" type="number" step="any" inputmode="decimal" placeholder="價格"></div><button class="plus" data-m="8">＋</button><div class="seg" data-p="T.mt8"><b data-v="1">含稅</b><b data-v="0">未稅</b></div></div>
+<div class="chips" id="c8"></div><div class="stt" id="s8"></div></div>
+<div class="row"><button data-clr style="margin-left:auto">清除價格</button></div></div>
+<div class="hint" id="ph"></div></section>
+
+<details class="sec" id="setall"><summary><span>各手續費設定</span><span class="sm"><div id="stsum"></div><div id="csum"></div><div id="rsum"></div></span></summary>
+<div class="grp g1" id="stsec"><h2>店家與退稅平台</h2><div class="cap">退稅平台與店家收的費用、退款方式</div>
+<div class="row"><select data-k="s" class="sel"></select><button data-k="s" data-a="d">設為常用</button><button data-k="s" data-a="x">刪除</button></div>
+<div class="row"><button data-k="s" data-a="u" class="hide">更新預設</button><button data-k="s" data-a="n">另存新預設</button></div>
+<div class="row hide" data-nr="s"><input class="nm" placeholder="替這組店家設定命名"><button data-k="s" data-a="ok">儲存</button><button data-k="s" data-a="cn">取消</button></div>
+<div class="fg"><div><div class="lbl">退稅業者手續費</div><div class="row"><input data-p="S.s.fval" type="number" step="any" inputmode="decimal" placeholder="0"><div class="seg" data-p="S.s.ftype"><b data-v="%">%</b><b data-v="¥">日幣</b></div></div></div>
+<div id="fbc"><div class="lbl">計算基準</div><div class="seg" data-p="S.s.fbase"><b data-v="tax">退稅額</b><b data-v="net">未稅額</b><b data-v="gross">含稅價</b></div></div>
+<div><div class="lbl">提領手續費</div><div class="row"><input data-p="S.s.wval" type="number" step="any" inputmode="decimal" placeholder="0"><div class="seg" data-p="S.s.wtype"><b data-v="%">%</b><b data-v="¥">日幣</b></div></div></div>
+<div id="wbc"><div class="lbl">計算基準</div><div class="seg" data-p="S.s.wbase"><b data-v="tax">退稅額</b><b data-v="net">未稅額</b></div></div></div>
+<div class="row"><span>最低收費 ¥</span><input data-p="S.s.fmin" type="number" step="any" inputmode="decimal" placeholder="選填"></div>
+<div class="lbl">退款方式</div>
+<div class="row"><div class="seg" data-p="S.s.method"><b data-v="cash">現金</b><b data-v="card">信用卡</b></div></div>
+<div id="cashbox"><label>現金額外手續費</label>
+<div class="row"><input data-p="S.s.cval" type="number" step="any" inputmode="decimal" placeholder="留空＝0"><div class="seg" data-p="S.s.ctype"><b data-v="%">%</b><b data-v="¥">日幣</b></div></div>
+<div class="row"><span>現金手續費上限 ¥</span><input data-p="S.s.ccap" type="number" step="any" inputmode="decimal" placeholder="選填"></div>
+<div class="row"><span>取整單位（無條件捨去）</span><div class="seg" data-p="S.s.unit"><b data-v="50">50</b><b data-v="100">100</b></div></div>
+<div class="hint w">現金退款僅限部分機場，請確認出境機場。</div></div></div>
+
+<div class="grp g2"><h2>信用卡</h2><div class="cap">刷卡付款、國外手續費與回饋</div>
+<div class="row"><select data-k="c" class="sel"></select><button data-k="c" data-a="d">設為常用</button><button data-k="c" data-a="x">刪除</button></div>
+<div class="row"><button data-k="c" data-a="u" class="hide">更新預設</button><button data-k="c" data-a="n">另存新預設</button></div>
+<div class="row hide" data-nr="c"><input class="nm" placeholder="替這組信用卡設定命名"><button data-k="c" data-a="ok">儲存</button><button data-k="c" data-a="cn">取消</button></div>
+<div class="row"><span>卡別組織</span><div class="seg" data-p="S.c.brand"><b data-v="VISA">VISA</b><b data-v="MASTER">MASTER</b><b data-v="JCB">JCB</b></div></div>
+<div class="row"><span>國外交易手續費 %</span><input data-p="S.c.cfee" type="number" step="any" inputmode="decimal"></div>
+<div class="row" id="rfw"><span>退稅回信用卡是否再收國外手續費</span><div class="seg" data-p="S.c.rfee"><b data-v="true">是</b><b data-v="false">否</b></div></div>
+<div class="row"><span>扣款帳戶</span><div class="seg" data-p="S.c.acct"><b data-v="twd">台幣帳戶</b><b data-v="jpy">日圓帳戶</b></div></div>
+<div class="row"><span>回饋 %</span><input data-p="S.c.reward" type="number" step="any" inputmode="decimal" placeholder="0"></div>
+<div class="row" id="rcw"><span>退稅回信用卡時，回饋是否一併扣回</span><div class="seg" data-p="S.c.rclaw"><b data-v="true">是</b><b data-v="false">否</b></div></div></div>
+
+<div class="grp g3" id="ratebox"><h2>匯率</h2><div class="cap">手動輸入，依卡別組織各自記住</div>
+<div class="row"><span>買入 1日圓＝</span><input id="rb" type="number" step="any" inputmode="decimal" placeholder="例 0.21"><span>台幣</span></div>
+<div class="row"><span>退款 1日圓＝</span><input id="rr" type="number" step="any" inputmode="decimal" placeholder="留空＝同買入"><span>台幣</span></div>
+<div class="row"><span>回饋 1日圓＝</span><input id="rrw" type="number" step="any" inputmode="decimal" placeholder="留空＝同買入"><span>台幣</span></div>
+<div class="hint" id="rd"></div>
+<div class="hint">查詢連結（查詢時手續費請填 0，本工具另外計算）：<a target="_blank" rel="noopener" href="https://www.twrates.com/card/visa/jpy.html">優率網</a></div></div></details>
+
+
+
+<section id="ressec"><div class="rh"><span id="rt">結果</span><span id="rsm"></span><button id="rtg">收合 ⌄</button></div><div id="out"></div></section>
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],cl=o=>JSON.parse(JSON.stringify(o)),n=x=>parseFloat(x)||0;
+const D=new Date().toISOString().slice(0,10);
+const DEF={mode:'jpy',s:{fval:'',ftype:'%',fbase:'tax',fmin:'',method:'card',cval:'',ctype:'%',unit:100},c:{brand:'VISA',cfee:'1.5',rfee:false,reward:'',rclaw:false,acct:'twd'},
+r:{VISA:{},MASTER:{},JCB:{}},stores:[],cards:[],as:-1,ac:-1,ds:-1,dc:-1};
+let S=cl(DEF),T={tr:0,ir:0.1,dtype:'%',mx:0,mt10:1,mt8:1,t10:[],t8:[]};
+try{const j=JSON.parse(localStorage.getItem('jtf1'));if(j)S=Object.assign(cl(DEF),j)}catch(e){}
+if(S.s&&S.s.method=='other')S.s.method='card';
+const mc=o=>Object.assign({brand:'VISA',cfee:'1.5',rfee:false,reward:'',rclaw:false,acct:'twd'},o);S.c=mc(S.c);S.cards.forEach(x=>x.v=mc(x.v));
+const ms=o=>Object.assign({fval:'',ftype:'%',fbase:'tax',fmin:'',method:'card',cval:'',ctype:'%',unit:100,wval:'',wbase:'tax',ccap:'',wtype:'%'},o);S.s=ms(S.s);S.stores.forEach(x=>x.v=ms(x.v));S.tx=S.tx||'ref';
+const sv=()=>{try{localStorage.setItem('jtf1',JSON.stringify(S))}catch(e){}};
+const M={s:{arr:'stores',a:'as',d:'ds'},c:{arr:'cards',a:'ac',d:'dc'}};
+const W=()=>({S,T});
+const get=p=>p.split('.').reduce((o,k)=>o&&o[k],W());
+function set(p,v){const k=p.split('.'),l=k.pop(),o=k.reduce((o,x)=>o[x]=o[x]||{},W());o[l]=v;if(k[1]==='r')o.date=D}
+const fmt=x=>Math.round(x).toLocaleString('en-US');
+const pct=x=>(x*100).toFixed(2)+'%';
+
+function applyDef(){['s','c'].forEach(k=>{const K=M[k],i=S[K.d];if(i>=0&&S[K.arr][i]){S[k]=cl(S[K.arr][i].v);S[K.a]=i}})}
+function act(k,a){const K=M[k],A=S[K.arr],i=S[K.a];
+ if(a=='n'){$('[data-nr='+k+']').classList.remove('hide');$('[data-nr='+k+'] input').focus();return}
+ else if(a=='cn'){$('[data-nr='+k+']').classList.add('hide');return}
+ else if(a=='ok'){const inp=$('[data-nr='+k+'] input'),nm=inp.value.trim();if(!nm){inp.focus();return}A.push({n:nm,v:cl(S[k])});S[K.a]=A.length-1;inp.value='';$('[data-nr='+k+']').classList.add('hide')}
+ else if(i>=0){if(a=='u')A[i].v=cl(S[k]);
+  if(a=='d')S[K.d]=i;
+  if(a=='x'){A.splice(i,1);S[K.a]=-1;if(S[K.d]==i)S[K.d]=-1;else if(S[K.d]>i)S[K.d]--}}
+ sv();ui()}
+
+document.addEventListener('mousedown',e=>{if(e.target.closest('button[data-m]'))e.preventDefault()});
+document.addEventListener('click',e=>{
+ if(e.target.closest('#rtg')){const r=$('#ressec');r.classList.toggle('rc');$('#rtg').textContent=r.classList.contains('rc')?'展開 ⌃':'收合 ⌄';return}
+ if(e.target.closest('[data-clr]')){['#price','#disc','#m10','#m8'].forEach(i=>$(i).value='');T.t10=[];T.t8=[];T.tr=0;ui();$(T.mx?'#m10':'#price').focus();return}
+ const ir=e.target.closest('button[data-ir]');if(ir){T.ir=+ir.dataset.ir;ui();return}
+ const ac=e.target.closest('button[data-ac]');if(ac){const r=+ac.dataset.ac,i=$('#price');if(T.tr===r){T.tr=0;i.value=T.base||''}else{const bse=T.tr?T.base:n(i.value);if(bse>0){T.base=bse;T.tr=r;i.value=bse+Math.floor(bse*r)}}ui();return}
+ const mb=e.target.closest('button[data-m]');if(mb){const k=mb.dataset.m,i=$('#m'+k),v=n(i.value);if(v>0){T['t'+k].push(v);i.value=''}ui();i.focus();return}
+ const ch=e.target.closest('[data-del]');if(ch){const [k,j]=ch.dataset.del.split(':');T['t'+k].splice(+j,1);ui();return}
+ const b=e.target.closest('.seg b');
+ if(b){const g=b.parentNode,p=g.dataset.p;let v=b.dataset.v;
+  if(v=='true')v=true;else if(v=='false')v=false;else if(/^(T\.|S\.s\.unit)/.test(p)&&v!=='%'&&v!=='¥')v=Number(v);
+  if(g.dataset.tog&&get(p)===v)v=0;
+  set(p,v);sv();ui();return}
+ const x=e.target.closest('button[data-k]');if(x)act(x.dataset.k,x.dataset.a);
+ if(e.target.id=='reset'){applyDef();sv();ui()}});
+document.addEventListener('input',e=>{const t=e.target;
+ if(t.dataset.p){set(t.dataset.p,t.value);sv();ui()}
+ else if(t.id=='price'||t.id=='disc'||t.id=='m10'||t.id=='m8'){if(t.id=='price')T.tr=0;ui()}
+ else if(t.id=='rb'||t.id=='rr'||t.id=='rrw'){const R=S.r[S.c.brand]=S.r[S.c.brand]||{};R[{rb:'buy',rr:'ref',rrw:'rew'}[t.id]]=t.value;R.date=D;sv();ui()}});
+document.addEventListener('change',e=>{const t=e.target;if(t.classList.contains('sel')){
+ const k=t.dataset.k,K=M[k],i=+t.value;S[K.a]=i;if(i>=0)S[k]=cl(S[K.arr][i].v);sv();ui()}});
+
+var OP={};
+$('#out').addEventListener('toggle',e=>{const t=e.target;if(t.dataset&&t.dataset.id)OP[t.dataset.id]=t.open},true);
+function ui(){
+ $$('.seg[data-p]').forEach(g=>{const c=String(get(g.dataset.p));[...g.children].forEach(b=>b.classList.toggle('on',b.dataset.v===c))});
+ $$('input[data-p]').forEach(i=>{if(i!==document.activeElement)i.value=get(i.dataset.p)??''});
+ ['s','c'].forEach(k=>{const K=M[k],A=S[K.arr],sel=$('.sel[data-k='+k+']');
+  sel.innerHTML='<option value="-1">（自訂／未選預設）</option>'+A.map((o,i)=>`<option value="${i}">${S[K.d]==i?'★ ':''}${o.n.replace(/</g,'&lt;')}</option>`).join('');
+  sel.value=S[K.a];const i=S[K.a],dirty=i>=0&&A[i]&&JSON.stringify(A[i].v)!==JSON.stringify(S[k]);
+  $('button[data-k='+k+'][data-a=u]').classList.toggle('hide',!dirty);
+  $('button[data-k='+k+'][data-a=d]').classList.toggle('hide',i<0);$('button[data-k='+k+'][data-a=x]').classList.toggle('hide',i<0)});
+ const twd=S.mode=='twd',m=S.s.method;
+ $('#irw').classList.toggle('hide',S.tx=='non'||!!T.tr);$$('button[data-ac]').forEach(b=>b.classList.toggle('on',+b.dataset.ac===T.tr));$$('button[data-ir]').forEach(b=>b.classList.toggle('on',+b.dataset.ir===T.ir));$('#wbc').classList.toggle('inv',S.s.wtype=='¥');$('#fbc').classList.toggle('inv',S.s.ftype=='¥');
+ $('#cashbox').classList.toggle('hide',m!='cash');$('#rfw').classList.toggle('hide',m!='card');$('#rcw').classList.toggle('hide',m!='card');$('#stsec').classList.toggle('hide',S.tx=='non');if(S.tx=='non'){$('#rfw').classList.add('hide');$('#rcw').classList.add('hide')}
+ $('#ratebox').classList.toggle('hide',!twd);
+ const R=S.r[S.c.brand]||{};
+ if($('#rb')!==document.activeElement)$('#rb').value=R.buy??'';if($('#rr')!==document.activeElement)$('#rr').value=R.ref??'';if($('#rrw')!==document.activeElement)$('#rrw').value=R.rew??'';
+ const dd=R.date?Math.round((new Date(D)-new Date(R.date))/864e5):null;
+ $('#rd').innerHTML=R.date?`${S.c.brand} 匯率更新日：${R.date}`+(dd>=2?` <span class="w">（已 ${dd} 天未更新）</span>`:''):`${S.c.brand} 尚未輸入匯率`;
+ ['10','8'].forEach(k=>{const A=T['t'+k],tot=A.reduce((q,x)=>q+x,0)+n($('#m'+k).value);$('#c'+k).innerHTML=A.map((v,j)=>`<span class="chip" data-del="${k}:${j}">¥${fmt(v)} ✕</span>`).join('');$('#s'+k).innerHTML=`<span class="sl">${k}% 小計（${T['mt'+k]?'含稅':'未稅'}）</span><span class="sv">¥${fmt(tot)}</span>`+(A.length?`<span class="hint">已加 ${A.length} 筆</span>`:'')});
+ $('#sgl').classList.toggle('hide',!!T.mx);
+ $('#stsum').textContent=({cash:'現金退款',card:'信用卡退款'}[S.s.method]||'')+' · 平台手續費 '+(n(S.s.fval)||0)+(S.s.ftype=='%'?'%':'円');
+ $('#csum').textContent=S.c.brand+' · 國外 '+(n(S.c.cfee)||0)+'% · 回饋 '+(n(S.c.reward)||0)+'%';
+ $('#rsum').textContent='匯率 '+(n((S.r[S.c.brand]||{}).buy)||'未填');$('#rsum').style.display=twd?'':'none';$('#stsum').style.display=S.tx=='non'?'none':'';$('#mix').classList.toggle('hide',!T.mx);
+ calc()}
+
+function calc(){
+ const P0=T.tr?T.base:n($('#price').value),dv=n($('#disc').value),P=Math.max(0,Math.round(T.dtype=='%'?P0*(1-dv/100):P0-dv)),tr=T.tr,r=tr||T.ir,s=S.s,c=S.c,o=$('#out');
+ const mxs=T.mx?[[10,0.1],[8,0.08]].map(([k,rt])=>{const sub=Math.round(T['t'+k].reduce((q,x)=>q+x,0)+n($('#m'+k).value));let nt=0,tx=0;if(sub>0){if(T['mt'+k]){nt=Math.round(sub/(1+rt));tx=sub-nt}else{nt=sub;tx=Math.floor(nt*rt)}}return{k,rt,nt,tx,gr:nt+tx,sub}}):null;
+ if(!(T.mx?mxs[0].gr+mxs[1].gr:P0)){$('#ph').textContent='';$('#rsm').textContent='';o.innerHTML='<div class="hint">請輸入價格</div>';return}
+ let net,tax,gross;
+ if(T.mx){net=mxs[0].nt+mxs[1].nt;tax=mxs[0].tx+mxs[1].tx;gross=net+tax}else if(tr){net=Math.round(P);tax=Math.floor(net*tr);gross=net+tax}else{gross=Math.round(P);net=Math.round(gross/(1+r));tax=gross-net}
+ $('#ph').innerHTML=T.mx?`<div class="tot">合計含稅 ¥${fmt(gross)}</div>`+mxs.map(m=>`<div class="hint">${m.k}%　未稅 ¥${fmt(m.nt)}　稅額 ¥${fmt(m.tx)}</div>`).join(''):(dv>0?`店家折扣後 ¥${fmt(P)}，`:'')+(tr?'視為未稅價':'視為含稅價')+`（稅率 ${r*100}%）：含稅 ¥${fmt(gross)}，未稅 ¥${fmt(net)}，稅額 ¥${fmt(tax)}`;
+ const f=n(c.cfee)/100,twd=S.mode=='twd';
+ let fee=s.ftype=='%'?(s.fbase=='net'?net:s.fbase=='gross'?gross:tax)*n(s.fval)/100:n(s.fval);fee=Math.round(Math.max(fee,n(s.fmin)));
+ const wf=Math.round(s.wtype=='¥'?n(s.wval):(s.wbase=='net'?net:tax)*n(s.wval)/100),r0=Math.max(0,tax-fee-wf);let cx=0,r1=r0,a=r0,loss=0,rf=0;const cash=s.method=='cash';
+ if(cash){cx=Math.round(s.ctype=='%'?r0*n(s.cval)/100:n(s.cval));if(n(s.ccap)>0)cx=Math.min(cx,n(s.ccap));r1=Math.max(0,r0-cx);a=Math.floor(r1/s.unit)*s.unit;loss=r1-a}
+ else if(s.method=='card'&&c.rfee){rf=Math.round(r0*f);a=r0-rf}
+ const payJ=gross+Math.round(gross*f),netJ=payJ-a;
+ const L=(k,v,cls)=>`<div class="r ${cls||''}"><span>${k}</span><span>${v}</span></div>`;
+ const refd=S.tx!='non',R=S.r[c.brand]||{},buy=n(R.buy),ref=n(R.ref)||buy,rr=n(R.rew)||buy,rw=n(c.reward)/100,ja=c.acct=='jpy';
+ const T1=twd&&!ja,tc=!!(T1&&buy),aa=refd?a:0,fy=Math.round(gross*f),nJ=payJ-aa,sx=tc?'':'日幣';
+ const payT=tc?Math.round(gross*buy)+Math.round(gross*f*buy):0,refT=tc?Math.round(aa*ref):0,nT=payT-refT;
+ const base=gross-(refd&&c.rclaw&&s.method=='card'?a:0),rwY=Math.round(base*rw),rwT=rr?Math.round(rwY*rr):0;
+ const bs=base==gross?`含稅價 ¥${fmt(gross)}`:`（含稅價 ¥${fmt(gross)} − 退回 ¥${fmt(a)}）`;
+ const wy=(y,rt)=>tc?`／NT$${fmt(Math.round(y*rt))}`:'';
+ const eff=tc?1-nT/(gross*buy):1-nJ/gross,eff2=tc?1-(nT-rwT)/(gross*buy):1-(nJ-rwY)/gross;
+ const K=(id,t,v,d)=>`<details class="kb" data-id="${id}"${OP[id]?' open':''}><summary class="r big"><span>${t}</span><span>${v}</span></summary><div class="kd">${d}</div></details>`;
+ let h='';
+ if(refd){const d1=L('含稅價',`¥${fmt(gross)}`,'dl')+L('未稅價',`¥${fmt(net)}`,'dl')+L('消費稅額',`¥${fmt(tax)}`,'dl')+(T.mx?mxs.map(m=>L(`　${m.k}% 稅額`,`¥${fmt(m.tx)}`,'dl')).join(''):'')+L('− 退稅業者手續費',`¥${fmt(fee)}`,'dl')+(wf?L('− 提領手續費',`¥${fmt(wf)}`,'dl'):'')+(cash?L('− 現金額外手續費',`¥${fmt(cx)}`,'dl')+L('理應退（取整前）',`¥${fmt(r1)}`,'dl')+L(`− 取整損失（捨去至 ${s.unit}）`,`¥${fmt(loss)}`,'dl'):'')+(rf?L('− 退回信用卡國外手續費',`¥${fmt(rf)}`,'dl'):'')+L('＝ 預計退稅',`¥${fmt(a)}${wy(a,ref)}`,'dl dr');
+  h+=K('b1','預計退稅',`¥${fmt(a)}${wy(a,ref)}`,d1)}
+ const v2=`¥${fmt(nJ)}${tc?`／NT$${fmt(nT)}`:''}`,l2=refd?'扣稅實付':'刷卡實付';
+ if(refd||rw<=0){const d2=L('含稅價',`¥${fmt(gross)}`,'dl')+(f?L(`+ 國外手續費（${n(c.cfee)}%）`,`¥${fmt(fy)}`,'dl'):'')+L('＝ 刷卡實付',`¥${fmt(payJ)}${tc?`／NT$${fmt(payT)}`:''}`,'dl')+(refd?L('− 預計退稅',`¥${fmt(a)}${wy(a,ref)}`,'dl'):'')+L('＝ '+l2,v2,'dl dr')+(refd?L('等效折扣率',pct(eff),'dl')+`<div class="hint">1 − 扣稅實付 ÷ 含稅價${tc?'（台幣：含稅價按買入匯率換算）':''}</div>`:'')+(tc?`<div class="hint">台幣：¥${fmt(gross)} × ${buy} ＝ NT$${fmt(Math.round(gross*buy))}`+(f?`；手續費 ¥${fmt(fy)} × ${buy} ＝ NT$${fmt(Math.round(gross*f*buy))}`:'')+(refd?`；退稅 ¥${fmt(a)} × ${ref} ＝ NT$${fmt(refT)}`:'')+'</div>':'');
+  h+=K('b2',l2+sx,v2,d2)}
+ if(rw>0){const v3=`¥${fmt(nJ-rwY)}${tc?`／NT$${fmt(nT-rwT)}`:''}`,l3=refd?'扣回饋扣稅實付':'扣回饋實付';
+  const d3=L(l2,v2,'dl')+L('− 預估回饋',`¥${fmt(rwY)}${twd&&rr?`／NT$${fmt(rwT)}`:''}`,'dl')+L('＝ '+l3,v3,'dl dr')+L('扣回饋後折扣率',pct(eff2),'dl')+`<div class="hint">1 − ${l3} ÷ 含稅價${tc?'（台幣：含稅價按買入匯率換算）':''}</div>`+`<div class="hint">回饋計算：${bs} × ${n(c.reward)}% ＝ ¥${fmt(rwY)}`+(twd&&rr?`；× 回饋匯率 ${rr} ＝ NT$${fmt(rwT)}`:'')+'</div>'+(twd&&!rr?'<div class="hint w">輸入匯率才能估算台幣回饋。</div>':'');
+  h+=K('b3',l3+sx,v3,d3)}
+ if(T1&&!buy)h+='<div class="hint w">請輸入該卡別的買入匯率，才能換算台幣。</div>';
+ {const nt=(refd&&cash?'現金退稅以退款匯率換算。':'')+(c.brand=='JCB'&&tc?'JCB 最終匯率可能與刷卡當天不同。':'');if(nt)h+=`<div class="hint">${nt}</div>`}
+ if(refd&&net<5000)h+='<div class="hint w">未稅 ¥'+fmt(net)+' 未達 ¥5,000，同日同店合計未達恐不符免稅門檻。</div>';
+ o.innerHTML=h;const kb=o.querySelectorAll('details.kb>summary'),ls=kb[kb.length-1];$('#rsm').textContent=ls?ls.children[0].textContent+' '+ls.children[1].textContent:''}
+ui();
+</script><script>if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}))</script>
+</body></html>
