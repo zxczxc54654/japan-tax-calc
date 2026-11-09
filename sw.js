@@ -1,5 +1,5 @@
 // 離線快取。改版時把 V 的數字加 1，使用者開啟兩次 App 就會換成新版。
-const V = 'jtf-v1';
+const V = 'jtf-v2';
 const FILES = ['./', 'index.html', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png', 'apple-touch-icon.png'];
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(V).then(c => c.addAll(FILES)).then(() => self.skipWaiting()));

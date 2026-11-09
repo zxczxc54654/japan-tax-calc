@@ -39,13 +39,16 @@ a{color:var(--a)}.hide{display:none!important}.chips{margin:2px 0}.sub{font-size
 details.kb>summary>span:first-child{flex:1}details.kb>summary>span:last-child{text-align:right}
 .r2 button.on{background:var(--a);color:#fff;border-color:var(--a)}.fg{display:grid;grid-template-columns:1fr 1fr;gap:4px 10px;margin:8px 0}.fg .row{flex-wrap:nowrap;margin:0}.fg input{min-width:0;flex:1 1 48px;width:100%}.fg .row .seg{flex:none}.fg .seg b{padding:9px 7px;font-size:13px;text-align:center}#fbc .seg,#wbc .seg{display:flex;width:100%}#fbc .seg b,#wbc .seg b{flex:1}.inv{visibility:hidden}
 .r2 span{width:30px;flex:none}
-#ressec{position:sticky;bottom:0;z-index:5;margin:10px -12px 0;border-radius:16px 16px 0 0;border-bottom:0;box-shadow:0 -6px 18px rgba(0,0,0,.3);max-height:55vh;overflow:auto;padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px))}
-.rh{display:flex;align-items:center;gap:8px;margin-bottom:6px}.rh span{font-weight:700;font-size:14px}#rsm{flex:1;text-align:right;font-size:15px}#rt{flex:1}#ressec:not(.rc) #rsm{display:none}.rc #rt{display:none}.rc #out{display:none}.rc .rh{margin-bottom:0}
+#ressec{position:sticky;bottom:0;z-index:5;margin:auto -12px 0;border-radius:16px 16px 0 0;border-bottom:0;box-shadow:0 -6px 18px rgba(0,0,0,.3);max-height:55vh;overflow:auto;padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px))}
+.rh{display:flex;align-items:center;gap:8px;margin-bottom:6px}.rh span{font-weight:700;font-size:14px}#rsm{flex:1;text-align:right;font-size:15px}#rt{flex:1}#ressec:not(.rc) #rsm{display:none}.rc #rt{flex:none}.rc #out{display:none}.rc .rh{margin-bottom:0}
 .mc{border:1px solid var(--b);border-radius:12px;padding:10px 12px;margin:10px 0;background:var(--bg)}.mt{font-weight:700;margin-bottom:6px}.mrow{display:flex;gap:8px;align-items:center}.mrow .pbox{flex:1;min-width:0;padding:4px 10px}.mrow .plus{font-size:22px;font-weight:700;padding:6px 14px}.mc .seg b{padding:9px 9px}
 .mc .chip{font-size:22px;padding:2px 12px;border-radius:20px;margin:8px 6px 0 0}.stt{display:flex;align-items:baseline;gap:8px;margin-top:8px;flex-wrap:wrap}.sl{font-size:13px;color:var(--m)}.sv{font-size:26px;font-weight:700}.tot{color:var(--t);font-size:34px;font-weight:700;margin-top:6px}
-</style></head><body>
+#ressec{background:color-mix(in srgb,var(--a) 9%,var(--bg));border-top:3px solid var(--a)}#ressec .r.big{background:var(--c)}
+.top{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:6px}.top .seg{display:flex}.top .seg b{flex:1;text-align:center;padding:10px 4px;white-space:nowrap}
+body{min-height:100vh;min-height:calc(100dvh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;padding-bottom:0}</style></head><body>
 <h1>日本免稅實付試算</h1>
-<div class="row"><div class="seg" data-p="S.mode"><b data-v="jpy">只算日幣</b><b data-v="twd">換算台幣</b></div><div class="seg" data-p="S.tx"><b data-v="ref">可退稅</b><b data-v="non">不退稅</b></div><button id="reset">重設為常用</button></div>
+<div class="top"><div class="seg" data-p="S.mode"><b data-v="jpy">只算日幣</b><b data-v="twd">換算台幣</b></div><div class="seg" data-p="S.tx"><b data-v="ref">算退稅</b><b data-v="non">算回饋</b></div></div>
+<div class="row"><button id="reset">重設為常用</button></div>
 
 <section><div class="row hd"><b class="ttl">商品價格</b><div class="seg" data-p="T.mx"><b data-v="0">單一稅率</b><b data-v="1">混合稅率</b></div></div>
 <div id="sgl">
