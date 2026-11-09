@@ -48,7 +48,7 @@ details.kb>summary>span:first-child{flex:1}details.kb>summary>span:last-child{te
 body{min-height:100vh;min-height:calc(100dvh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;padding-bottom:0}</style></head><body>
 <h1>日本免稅實付試算</h1>
 <div class="top"><div class="seg" data-p="S.mode"><b data-v="jpy">只算日幣</b><b data-v="twd">換算台幣</b></div><div class="seg" data-p="S.tx"><b data-v="ref">算退稅</b><b data-v="non">算回饋</b></div></div>
-<div class="row"><button id="reset">重設為常用</button></div>
+<div class="row"><button id="reset">↺重設為常用</button></div>
 
 <section><div class="row hd"><b class="ttl">商品價格</b><div class="seg" data-p="T.mx"><b data-v="0">單一稅率</b><b data-v="1">混合稅率</b></div></div>
 <div id="sgl">
@@ -72,15 +72,14 @@ body{min-height:100vh;min-height:calc(100dvh - env(safe-area-inset-top,0px) - en
 <div class="row"><select data-k="s" class="sel"></select><button data-k="s" data-a="d">設為常用</button><button data-k="s" data-a="x">刪除</button></div>
 <div class="row"><button data-k="s" data-a="u" class="hide">更新預設</button><button data-k="s" data-a="n">另存新預設</button></div>
 <div class="row hide" data-nr="s"><input class="nm" placeholder="替這組店家設定命名"><button data-k="s" data-a="ok">儲存</button><button data-k="s" data-a="cn">取消</button></div>
+<div class="lbl">退款方式</div>
+<div class="row"><div class="seg" data-p="S.s.method"><b data-v="cash">現金</b><b data-v="card">信用卡</b></div></div>
 <div class="fg"><div><div class="lbl">退稅業者手續費</div><div class="row"><input data-p="S.s.fval" type="number" step="any" inputmode="decimal" placeholder="0"><div class="seg" data-p="S.s.ftype"><b data-v="%">%</b><b data-v="¥">日幣</b></div></div></div>
 <div id="fbc"><div class="lbl">計算基準</div><div class="seg" data-p="S.s.fbase"><b data-v="tax">退稅額</b><b data-v="net">未稅額</b><b data-v="gross">含稅價</b></div></div>
 <div><div class="lbl">提領手續費</div><div class="row"><input data-p="S.s.wval" type="number" step="any" inputmode="decimal" placeholder="0"><div class="seg" data-p="S.s.wtype"><b data-v="%">%</b><b data-v="¥">日幣</b></div></div></div>
 <div id="wbc"><div class="lbl">計算基準</div><div class="seg" data-p="S.s.wbase"><b data-v="tax">退稅額</b><b data-v="net">未稅額</b></div></div></div>
 <div class="row"><span>最低收費 ¥</span><input data-p="S.s.fmin" type="number" step="any" inputmode="decimal" placeholder="選填"></div>
-<div class="lbl">退款方式</div>
-<div class="row"><div class="seg" data-p="S.s.method"><b data-v="cash">現金</b><b data-v="card">信用卡</b></div></div>
-<div id="cashbox"><label>現金額外手續費</label>
-<div class="row"><input data-p="S.s.cval" type="number" step="any" inputmode="decimal" placeholder="留空＝0"><div class="seg" data-p="S.s.ctype"><b data-v="%">%</b><b data-v="¥">日幣</b></div></div>
+<div id="cashbox">
 <div class="row"><span>現金手續費上限 ¥</span><input data-p="S.s.ccap" type="number" step="any" inputmode="decimal" placeholder="選填"></div>
 <div class="row"><span>取整單位（無條件捨去）</span><div class="seg" data-p="S.s.unit"><b data-v="50">50</b><b data-v="100">100</b></div></div>
 <div class="hint w">現金退款僅限部分機場，請確認出境機場。</div></div></div>
@@ -190,8 +189,8 @@ function calc(){
  $('#ph').innerHTML=T.mx?`<div class="tot">合計含稅 ¥${fmt(gross)}</div>`+mxs.map(m=>`<div class="hint">${m.k}%　未稅 ¥${fmt(m.nt)}　稅額 ¥${fmt(m.tx)}</div>`).join(''):(dv>0?`店家折扣後 ¥${fmt(P)}，`:'')+(tr?'視為未稅價':'視為含稅價')+`（稅率 ${r*100}%）：含稅 ¥${fmt(gross)}，未稅 ¥${fmt(net)}，稅額 ¥${fmt(tax)}`;
  const f=n(c.cfee)/100,twd=S.mode=='twd';
  let fee=s.ftype=='%'?(s.fbase=='net'?net:s.fbase=='gross'?gross:tax)*n(s.fval)/100:n(s.fval);fee=Math.round(Math.max(fee,n(s.fmin)));
- const wf=Math.round(s.wtype=='¥'?n(s.wval):(s.wbase=='net'?net:tax)*n(s.wval)/100),r0=Math.max(0,tax-fee-wf);let cx=0,r1=r0,a=r0,loss=0,rf=0;const cash=s.method=='cash';
- if(cash){cx=Math.round(s.ctype=='%'?r0*n(s.cval)/100:n(s.cval));if(n(s.ccap)>0)cx=Math.min(cx,n(s.ccap));r1=Math.max(0,r0-cx);a=Math.floor(r1/s.unit)*s.unit;loss=r1-a}
+ const cash=s.method=='cash';let wf=Math.round(s.wtype=='¥'?n(s.wval):(s.wbase=='net'?net:tax)*n(s.wval)/100);if(cash&&n(s.ccap)>0)wf=Math.min(wf,n(s.ccap));const r0=Math.max(0,tax-fee-wf);let r1=r0,a=r0,loss=0,rf=0;
+ if(cash){a=Math.floor(r0/s.unit)*s.unit;loss=r0-a}
  else if(s.method=='card'&&c.rfee){rf=Math.round(r0*f);a=r0-rf}
  const payJ=gross+Math.round(gross*f),netJ=payJ-a;
  const L=(k,v,cls)=>`<div class="r ${cls||''}"><span>${k}</span><span>${v}</span></div>`;
@@ -204,7 +203,7 @@ function calc(){
  const eff=tc?1-nT/(gross*buy):1-nJ/gross,eff2=tc?1-(nT-rwT)/(gross*buy):1-(nJ-rwY)/gross;
  const K=(id,t,v,d)=>`<details class="kb" data-id="${id}"${OP[id]?' open':''}><summary class="r big"><span>${t}</span><span>${v}</span></summary><div class="kd">${d}</div></details>`;
  let h='';
- if(refd){const d1=L('含稅價',`¥${fmt(gross)}`,'dl')+L('未稅價',`¥${fmt(net)}`,'dl')+L('消費稅額',`¥${fmt(tax)}`,'dl')+(T.mx?mxs.map(m=>L(`　${m.k}% 稅額`,`¥${fmt(m.tx)}`,'dl')).join(''):'')+L('− 退稅業者手續費',`¥${fmt(fee)}`,'dl')+(wf?L('− 提領手續費',`¥${fmt(wf)}`,'dl'):'')+(cash?L('− 現金額外手續費',`¥${fmt(cx)}`,'dl')+L('理應退（取整前）',`¥${fmt(r1)}`,'dl')+L(`− 取整損失（捨去至 ${s.unit}）`,`¥${fmt(loss)}`,'dl'):'')+(rf?L('− 退回信用卡國外手續費',`¥${fmt(rf)}`,'dl'):'')+L('＝ 預計退稅',`¥${fmt(a)}${wy(a,ref)}`,'dl dr');
+ if(refd){const d1=L('含稅價',`¥${fmt(gross)}`,'dl')+L('未稅價',`¥${fmt(net)}`,'dl')+L('消費稅額',`¥${fmt(tax)}`,'dl')+(T.mx?mxs.map(m=>L(`　${m.k}% 稅額`,`¥${fmt(m.tx)}`,'dl')).join(''):'')+L('− 退稅業者手續費',`¥${fmt(fee)}`,'dl')+(wf?L(cash?'− 現金提領手續費':'− 提領手續費',`¥${fmt(wf)}`,'dl'):'')+(cash?L('理應退（取整前）',`¥${fmt(r1)}`,'dl')+L(`− 取整損失（捨去至 ${s.unit}）`,`¥${fmt(loss)}`,'dl'):'')+(rf?L('− 退回信用卡國外手續費',`¥${fmt(rf)}`,'dl'):'')+L('＝ 預計退稅',`¥${fmt(a)}${wy(a,ref)}`,'dl dr');
   h+=K('b1','預計退稅',`¥${fmt(a)}${wy(a,ref)}`,d1)}
  const v2=`¥${fmt(nJ)}${tc?`／NT$${fmt(nT)}`:''}`,l2=refd?'扣稅實付':'刷卡實付';
  if(refd||rw<=0){const d2=L('含稅價',`¥${fmt(gross)}`,'dl')+(f?L(`+ 國外手續費（${n(c.cfee)}%）`,`¥${fmt(fy)}`,'dl'):'')+L('＝ 刷卡實付',`¥${fmt(payJ)}${tc?`／NT$${fmt(payT)}`:''}`,'dl')+(refd?L('− 預計退稅',`¥${fmt(a)}${wy(a,ref)}`,'dl'):'')+L('＝ '+l2,v2,'dl dr')+(refd?L('等效折扣率',pct(eff),'dl')+`<div class="hint">1 − 扣稅實付 ÷ 含稅價${tc?'（台幣：含稅價按買入匯率換算）':''}</div>`:'')+(tc?`<div class="hint">台幣：¥${fmt(gross)} × ${buy} ＝ NT$${fmt(Math.round(gross*buy))}`+(f?`；手續費 ¥${fmt(fy)} × ${buy} ＝ NT$${fmt(Math.round(gross*f*buy))}`:'')+(refd?`；退稅 ¥${fmt(a)} × ${ref} ＝ NT$${fmt(refT)}`:'')+'</div>':'');
