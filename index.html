@@ -45,10 +45,38 @@ details.kb>summary>span:first-child{flex:1}details.kb>summary>span:last-child{te
 .mc .chip{font-size:22px;padding:2px 12px;border-radius:20px;margin:8px 6px 0 0}.stt{display:flex;align-items:baseline;gap:8px;margin-top:8px;flex-wrap:wrap}.sl{font-size:13px;color:var(--m)}.sv{font-size:26px;font-weight:700}.tot{color:var(--t);font-size:34px;font-weight:700;margin-top:6px}
 #ressec{background:color-mix(in srgb,var(--a) 9%,var(--bg));border-top:3px solid var(--a)}#ressec .r.big{background:var(--c)}
 .top{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:6px}.top .seg{display:flex}.top .seg b{flex:1;text-align:center;padding:10px 4px;white-space:nowrap}
-body{min-height:100vh;min-height:calc(100dvh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;padding-bottom:0}</style></head><body>
-<h1>日本免稅實付試算</h1>
+body{min-height:100vh;min-height:calc(100dvh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;padding-bottom:0}.hdr{display:flex;align-items:center;justify-content:space-between;gap:8px}.hdr h1{margin:6px 0 10px}
+.chip .x{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:color-mix(in srgb,var(--a) 20%,transparent);color:var(--a);font-style:normal;font-size:13px;margin-left:8px;vertical-align:middle}
+.sumrow{display:flex;align-items:flex-start;gap:8px}.sumrow #ph{flex:1;min-width:0}.sumrow button{flex:none}.tot{line-height:1.1;margin-top:0}
+.mc .seg b{background:var(--bg);color:#a8a8a2}.mc .seg b.on{background:var(--bg);color:var(--t)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .mc .seg b{color:#9a9a94}:root:not([data-theme=light]) .mc .seg b.on{color:#fff}:root:not([data-theme=light]) .mrow .plus{background:#fff;color:#000;border-color:#fff}}
+:root[data-theme=dark] .mc .seg b{color:#9a9a94}:root[data-theme=dark] .mc .seg b.on{color:#fff}:root[data-theme=dark] .mrow .plus{background:#fff;color:#000;border-color:#fff}
+.hb{display:flex;gap:6px}
+.mc .chip{display:inline-flex;align-items:center;line-height:1.2;padding:5px 8px 5px 14px}.chip .x{background:var(--c);vertical-align:baseline}
+/* v18 */
+.seg{padding:2px;gap:2px}.seg b{border-radius:6px}
+.mc .seg{border:0;padding:0;gap:8px;overflow:visible}.mc .seg b{border:1px solid var(--b);border-radius:8px;min-width:52px;text-align:center}.mc .seg b.on{font-weight:700;border-color:var(--t);box-shadow:inset 0 0 0 1px var(--t)}
+.fg .row .seg{width:72px}.fg .row .seg b{flex:1;text-align:center;padding:9px 0}
+[data-p="T.dtype"]{width:110px}[data-p="T.dtype"] b{flex:1;text-align:center}
+[data-p="S.s.unit"]{width:120px}[data-p="S.s.unit"] b{flex:1;text-align:center}
+[data-p="S.s.method"]{width:180px}[data-p="S.s.method"] b{flex:1;text-align:center}
+.pbox input{font-size:24px;padding:2px 4px}.pbox,.mrow .pbox{padding:3px 10px}.yen{font-size:16px}
+.tot{font-size:24px}.sv{font-size:24px}
+.mc .chip{font-size:16px;padding:3px 6px 3px 12px;margin:6px 6px 0 0}.chip .x{width:18px;height:18px;font-size:11px;margin-left:6px}
+.mrow{align-items:stretch}.mrow .seg{align-self:center}.mrow .plus{padding:0 14px;font-size:20px;line-height:1}
+/* v19 */
+#thm{font-size:20px;line-height:1;padding:6px 11px}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--sel:#e0584f}}:root[data-theme=dark]{--sel:#e0584f}
+.seg{background:var(--c)}
+.seg b{background:transparent;color:var(--m);border:1px solid transparent;display:inline-flex;align-items:center;justify-content:center}
+.seg b.on{background:color-mix(in srgb,var(--a) 9%,var(--bg));color:var(--sel,var(--a));border-color:color-mix(in srgb,var(--a) 40%,transparent)}
+.r2 button{color:var(--m)}.r2 button.on{background:color-mix(in srgb,var(--a) 9%,var(--bg));color:var(--sel,var(--a));border-color:color-mix(in srgb,var(--a) 40%,transparent)}
+.top .seg{background:none}.top .seg b{color:var(--t);border-color:transparent}.top .seg b.on{background:var(--a);color:#fff}
+.mc .seg{background:none}.mc .seg b.on{box-shadow:none;border-color:var(--b)}
+.pbox input:focus,.pbox input:focus-visible{outline:none}
+.fg input{padding:9px 5px;text-align:center}</style></head><body>
+<div class="hdr"><h1>日本免稅實付試算</h1><div class="hb"><button id="thm">深色</button><button id="reset">重設為常用</button></div></div>
 <div class="top"><div class="seg" data-p="S.mode"><b data-v="jpy">只算日幣</b><b data-v="twd">換算台幣</b></div><div class="seg" data-p="S.tx"><b data-v="ref">算退稅</b><b data-v="non">算回饋</b></div></div>
-<div class="row"><button id="reset">↺重設為常用</button></div>
 
 <section><div class="row hd"><b class="ttl">商品價格</b><div class="seg" data-p="T.mx"><b data-v="0">單一稅率</b><b data-v="1">混合稅率</b></div></div>
 <div id="sgl">
@@ -59,13 +87,13 @@ body{min-height:100vh;min-height:calc(100dvh - env(safe-area-inset-top,0px) - en
 </div>
 <div id="mix" class="hide">
 <div class="mc" style="--mc:#e0584f"><div class="mt">10% 品項</div>
-<div class="mrow"><div class="pbox"><span class="yen">¥</span><input id="m10" type="number" step="any" inputmode="decimal" placeholder="價格"></div><button class="plus" data-m="10">＋</button><div class="seg" data-p="T.mt10"><b data-v="1">含稅</b><b data-v="0">未稅</b></div></div>
+<div class="mrow"><div class="pbox"><span class="yen">¥</span><input id="m10" type="number" step="any" inputmode="decimal" placeholder="價格"></div><div class="seg" data-p="T.mt10"><b data-v="1">含稅</b><b data-v="0">未稅</b></div><button class="plus" data-m="10">＋</button></div>
 <div class="chips" id="c10"></div><div class="stt" id="s10"></div></div>
 <div class="mc" style="--mc:#3b82f6"><div class="mt">8% 品項</div>
-<div class="mrow"><div class="pbox"><span class="yen">¥</span><input id="m8" type="number" step="any" inputmode="decimal" placeholder="價格"></div><button class="plus" data-m="8">＋</button><div class="seg" data-p="T.mt8"><b data-v="1">含稅</b><b data-v="0">未稅</b></div></div>
+<div class="mrow"><div class="pbox"><span class="yen">¥</span><input id="m8" type="number" step="any" inputmode="decimal" placeholder="價格"></div><div class="seg" data-p="T.mt8"><b data-v="1">含稅</b><b data-v="0">未稅</b></div><button class="plus" data-m="8">＋</button></div>
 <div class="chips" id="c8"></div><div class="stt" id="s8"></div></div>
-<div class="row"><button data-clr style="margin-left:auto">清除價格</button></div></div>
-<div class="hint" id="ph"></div></section>
+</div>
+<div class="sumrow"><div class="hint" id="ph"></div><button data-clr id="clr2" class="hide">清除</button></div></section>
 
 <details class="sec" id="setall"><summary><span>各手續費設定</span><span class="sm"><div id="stsum"></div><div id="csum"></div><div id="rsum"></div></span></summary>
 <div class="grp g1" id="stsec"><h2>店家與退稅平台</h2><div class="cap">退稅平台與店家收的費用、退款方式</div>
@@ -135,6 +163,7 @@ function act(k,a){const K=M[k],A=S[K.arr],i=S[K.a];
 
 document.addEventListener('mousedown',e=>{if(e.target.closest('button[data-m]'))e.preventDefault()});
 document.addEventListener('click',e=>{
+ if(e.target.closest('#thm')){const cur=document.documentElement.dataset.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');S.theme=cur=='dark'?'light':'dark';sv();ui();return}
  if(e.target.closest('#rtg')){const r=$('#ressec');r.classList.toggle('rc');$('#rtg').textContent=r.classList.contains('rc')?'展開 ⌃':'收合 ⌄';return}
  if(e.target.closest('[data-clr]')){['#price','#disc','#m10','#m8'].forEach(i=>$(i).value='');T.t10=[];T.t8=[];T.tr=0;ui();$(T.mx?'#m10':'#price').focus();return}
  const ir=e.target.closest('button[data-ir]');if(ir){T.ir=+ir.dataset.ir;ui();return}
@@ -158,6 +187,8 @@ document.addEventListener('change',e=>{const t=e.target;if(t.classList.contains(
 var OP={};
 $('#out').addEventListener('toggle',e=>{const t=e.target;if(t.dataset&&t.dataset.id)OP[t.dataset.id]=t.open},true);
 function ui(){
+ if(S.theme)document.documentElement.dataset.theme=S.theme;
+ $('#thm').textContent=(S.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'))=='dark'?'☼':'◐';
  $$('.seg[data-p]').forEach(g=>{const c=String(get(g.dataset.p));[...g.children].forEach(b=>b.classList.toggle('on',b.dataset.v===c))});
  $$('input[data-p]').forEach(i=>{if(i!==document.activeElement)i.value=get(i.dataset.p)??''});
  ['s','c'].forEach(k=>{const K=M[k],A=S[K.arr],sel=$('.sel[data-k='+k+']');
@@ -173,11 +204,11 @@ function ui(){
  if($('#rb')!==document.activeElement)$('#rb').value=R.buy??'';if($('#rr')!==document.activeElement)$('#rr').value=R.ref??'';if($('#rrw')!==document.activeElement)$('#rrw').value=R.rew??'';
  const dd=R.date?Math.round((new Date(D)-new Date(R.date))/864e5):null;
  $('#rd').innerHTML=R.date?`${S.c.brand} 匯率更新日：${R.date}`+(dd>=2?` <span class="w">（已 ${dd} 天未更新）</span>`:''):`${S.c.brand} 尚未輸入匯率`;
- ['10','8'].forEach(k=>{const A=T['t'+k],tot=A.reduce((q,x)=>q+x,0)+n($('#m'+k).value);$('#c'+k).innerHTML=A.map((v,j)=>`<span class="chip" data-del="${k}:${j}">¥${fmt(v)} ✕</span>`).join('');$('#s'+k).innerHTML=`<span class="sl">${k}% 小計（${T['mt'+k]?'含稅':'未稅'}）</span><span class="sv">¥${fmt(tot)}</span>`+(A.length?`<span class="hint">已加 ${A.length} 筆</span>`:'')});
+ ['10','8'].forEach(k=>{const A=T['t'+k],tot=A.reduce((q,x)=>q+x,0)+n($('#m'+k).value);$('#c'+k).innerHTML=A.map((v,j)=>`<span class="chip" data-del="${k}:${j}">¥${fmt(v)}<i class="x">✕</i></span>`).join('');$('#s'+k).innerHTML=`<span class="sl">${k}% 小計（${T['mt'+k]?'含稅':'未稅'}）</span><span class="sv">¥${fmt(tot)}</span>`+(A.length?`<span class="hint">已加 ${A.length} 筆</span>`:'')});
  $('#sgl').classList.toggle('hide',!!T.mx);
  $('#stsum').textContent=({cash:'現金退款',card:'信用卡退款'}[S.s.method]||'')+' · 平台手續費 '+(n(S.s.fval)||0)+(S.s.ftype=='%'?'%':'円');
  $('#csum').textContent=S.c.brand+' · 國外 '+(n(S.c.cfee)||0)+'% · 回饋 '+(n(S.c.reward)||0)+'%';
- $('#rsum').textContent='匯率 '+(n((S.r[S.c.brand]||{}).buy)||'未填');$('#rsum').style.display=twd?'':'none';$('#stsum').style.display=S.tx=='non'?'none':'';$('#mix').classList.toggle('hide',!T.mx);
+ $('#rsum').textContent='匯率 '+(n((S.r[S.c.brand]||{}).buy)||'未填');$('#rsum').style.display=twd?'':'none';$('#stsum').style.display=S.tx=='non'?'none':'';$('#mix').classList.toggle('hide',!T.mx);$('#clr2').classList.toggle('hide',!T.mx);
  calc()}
 
 function calc(){
